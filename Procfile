@@ -1,0 +1,1 @@
+web: gunicorn TatGhor.wsgi:application --log-file - 

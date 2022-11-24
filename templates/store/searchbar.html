@@ -1,0 +1,130 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+
+{% load cart %}
+
+
+{% load custom_filter %}
+
+
+{% load static %}
+
+    <h2 class="display-4 text-center"> Search Result:-- </h2>
+
+  
+
+    <div class="container">
+        {% if products %}
+        <div class="row mx-auto">
+            <!--Looping products on this div-->
+                {% for product in products %}
+        <div class="card rounded-top mx-auto mb-3 text-light " class="card_all" style=" width: 20rem; 
+                    background:rgb(68, 4, 70);" id="{{product.id}}">
+
+
+                        <div class="col-lg-12 col-sm-12" style="height:200px;  width: auto">
+                            <img  src="{{product.image.url}}" class="card-img-top responsive-img mt-2 p-2 img-fluid  "  alt="picture" style="height: 384px;">
+                        </div>
+
+                        <div class="card-body">
+                        <p class="card-title ">{{product.name}}</p>
+                        <p class="card-title"><span>Price:&nbsp; </span>{{product.Unit_price}}<b style="font-size:25px; color: rgb(213, 213, 59);">&nbsp;৳</b><span></span></p>
+                        {% if product.quantity == 0 %}
+                        <p class="small text-light">Stock: <span class="text-info lead"><mark class="text-danger">{{product.quantity}} <span> /{{product.unit}}</span></mark></span> </p>
+                        {% else %}
+
+                        <p class="small text-light">Stock: <span class="text-warning lead">{{product.quantity}}</span> <span> /{{product.unit}}</span> </p>
+
+                        {% endif %}
+                        <p class="card-text truncate">{{product.description| truncatewords:10}}</p>
+
+                            <!-- View product button -->
+                        <a href="{% url 'productDetails' product.id %}" class="btn btn-light border  btn-sm btn-block text-light form-control" style="margin-bottom: 7px; background-color: rgb(114, 6, 67);">Product Details</a>
+
+                            <!--Cart code: To send data to server as form codes below:-->
+
+                        <div class="card-footer p-0 no-gutters">
+
+                    {% if product|is_in_cart:request.session.cart %}
+
+                        {% for i in products.paginator.page_range %}
+                            {% if i == products.number %}
+
+                           
+                                                                                                        <!--minus er form-->
+                            
+                            {% endif %}
+
+                        {% endfor %}
+                         
+                        <div class="row no-gutters p-0 m-0" >
+
+                            <form action="/?page={{i}}#{{product.id}}" method="POST" class="col-1 p-0 mr-2">
+                                {% csrf_token %}
+                                <input type="text" name="product" value="{{product.id}}" hidden>
+
+                                <input type="text" name="remove" value="True" hidden>
+
+                                <button type="submit" class=" btn btn-block red" style="margin-left: -6px;  ">
+                                  <span style="font-weight: 800;">-</span>
+                                </button>
+                            
+                            
+        </form>
+                               <!--center value-->
+                                <div class="col text-center">
+                                    {{product|cart_quantity:request.session.cart}} in cart
+                                </div>
+
+
+                                <!--plus er form-->
+                        <form action="/?page={{i}}#{{product.id}}" method="POST" class="formElement col-2 p-0 ml-3" sty>
+                        {% csrf_token %}
+                        <input type="text" name="product" value="{{product.id}}" hidden >
+                        {% if product.quantity == product|cart_quantity:request.session.cart %}
+
+                        <button type="submit" class=" btn btn-block red " style="margin-left: -9px; " disabled>
+                          <span style="font-weight: 700; ">+</span>
+                        </button>
+                        {% else %}
+
+                        <button type="submit" class=" btn btn-block  red" style="margin-right: -12px; " >
+                          <span style="font-weight: 700;">+</span>
+                        </button>
+                        {% endif %} 
+                        </form>
+                                
+                                
+                        </div>
+
+                        {% else %}
+                            <!--Add to cart form-->
+                        <form action="/?page={{i}}#{{product.id}}" method="POST" class="formElement btn-block ">
+                        {% csrf_token %}
+                        <input type="text" name="product" value="{{product.id}}" hidden>
+                        {% if product.quantity == 0 %}
+                        <input type="submit"  class="btn btn-light border btn-sm  form-control float-right disabled"  value="Add To Cart">
+                        {% else %}
+                        <input style="background-color: rgb(114, 6, 67);" type="submit"  class="btn btn-light border text-light btn-sm  form-control float-right "  value="Add To Cart">
+                        {% endif %}        
+                        </form>
+                            
+                        {% endif %}
+                        </div>
+                        </div>    
+                    </div>
+                {% endfor %}   
+        </div>
+        {% else %}
+        <p class="lead text-center" style="font-size: 30px; color:rgb(231, 34, 34);">OOps!!Wrong Search! There is no product with this name.
+        <a href="/" style="color: blue;">Go back</a>
+        </p>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,88 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+<!--      Loading template tags -->
+{% load cart %}
+
+{% load custom_filter %}
+<style>
+    body{
+        background-color: rgb(156, 10, 105); 
+        margin: 0;
+        padding: 0;
+        
+    }
+    li{
+        margin-top: 14px;
+    }
+    .container-fluid{
+        background-color: rgb(83, 14, 59);
+        
+    }
+</style>
+<div class="container-fluid  ">
+    
+
+
+    {% for d in data %}
+    <div class="row bg-dark mt-3">
+        <div class="col-lg-12 bg-dark  p-3">
+            <a href="{% url 'edit_profile_info' %}">
+                <button type="button" class="btn btn-outline-info " style="background-color:rgb(109, 6, 58) ;">
+                    <i class="  fa-2x fa-solid fa-screwdriver-wrench"></i>
+                    Profile Settings
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        
+        <div class="col-lg-4 p-5  text-light mt-5">
+            
+             <img class="img-fluid mt-2 img-thumbnail d-block mx-auto rounded-circle" src="{{d.image.url}}" alt="Uplaod an image" style="height: 150px; width: 150px;">
+             <h2 class="display-4 text-uppercase text-center" style="font-size: 34px;">{{user.get_full_name}}</h2>
+        </div>
+        <div class="col-lg-4 p-5  text-light mt-5">
+            <h3 class="display-4 text-uppercase text-center" style="font-size: 24px; font-weight: 400;">
+                <i class="fa-solid fa-address-card"></i>
+                Information
+            </h3>
+            <ul class="text-center ">
+
+                <li><strong class="lead">
+                    
+                    UserID: {{d.user.id}}</strong>
+                </li>
+                <li><strong class="lead">User Name: {{d.user}}</strong></li>
+                <li><strong class="lead">Address: {{d.address}} </strong></li>
+                <li><strong class="lead">Phone: {{d.phone}}</strong> <b></b></li>
+                <li><strong class="lead">Email: {{d.user.email}}</strong></li>
+                
+               
+            </ul>
+             
+        </div>
+        <div class="col-lg-4 p-5  text-light mt-5">
+
+            <strong class="lead mb-2">National Id No: {{d.national_id_no}}</strong> <br>
+                
+                    <strong class="lead text-center">National Id Image: </strong>
+                    <div class="col-lg-12">
+
+                        <img class="img-thumbnail d-block mx-auto img-fluid rounded bg-info" src=" {{d.national_id.url}}" alt="Image" style="max-height: 250px; width: 400px; margin:auto; margin-top: 15px; ">
+                    </div>
+                    
+                
+            
+            
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endfor %}
+{% endblock %}

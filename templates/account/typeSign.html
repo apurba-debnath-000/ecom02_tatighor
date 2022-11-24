@@ -1,0 +1,70 @@
+{% extends 'store/base.html' %}
+
+<!-- {% load crispy_forms_tags %}
+{% load widget_tweaks %} -->
+
+{% block content %}
+<style>
+    .container-fluid{
+        margin: 0%;
+        padding: 0;
+    }
+    body{
+        background-color: rgb(63, 44, 56);
+    }
+</style>
+<div class="container-fluid  mt-4">
+    <div class="row">
+        <div class="col-lg-12  display-4 text-light text-center">
+            Select Your Roll: 
+        </div>
+        
+    </div>
+
+
+<div class="row p-3 ">
+        <div class="col-lg-4 ">
+                <div class=" blockquote text-center text-light p-3 bg-primary">
+                        <i class="fa-3x fas fa-user-circle text-center "></i>
+                        <h3 class="display-4 text-uppercase">Customer </h3>
+                        <p class="small text-light ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus placeat eveniet alias commodi tempore. Perspiciatis, laborum. Fugit tempore veritatis facilis, cupiditate placeat reprehenderit officiis facere libero accusamus dignissimos necessitatibus sapiente.</p>
+                        <footer class="blockquote-footer text-light">
+                                Youtbe here <cite>Youtube</cite>
+                             <abbr title="World health org.">WHO</abbr>
+                        </footer>
+
+                        <a class="btn btn-success  d-grid gap-2" href="{% url 'cus_reg' %}" role="button" style="background-color: rgb(204, 53, 109);" >Customer</a>
+                </div>
+        </div>
+        <div class="col-lg-4 ">
+                <div class=" blockquote text-light text-center bg-secondary p-3">
+                        <i class="fa-3x  fas fa-user-circle text-center"></i>
+                        <h3 class="display-4 text-uppercase">Manufacturer</h3>
+                        <p class="small text-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus placeat eveniet alias commodi tempore. Perspiciatis, laborum. Fugit tempore veritatis facilis, cupiditate placeat reprehenderit officiis facere libero accusamus dignissimos necessitatibus sapiente.</p>
+                        <footer class="blockquote-footer text-light">
+                                Youtbe here <cite>Youtube</cite>
+                             <abbr title="World health org.">WHO</abbr>
+                        </footer>
+                        <a class="btn btn-primary  d-grid gap-2" href="{% url 'fa_reg' %}" role="button" style="background-color: rgb(204, 53, 109);" > Manufacturer</a>
+                </div>
+        </div>
+        <div class="col-lg-4 ">
+                <div class=" blockquote p-3 text-center text-light bg-primary ">
+                        <i class="fa-3x fas fa-user-circle text-center"></i>
+                        <h3 class="display-4 text-uppercase">Staff </h3>
+                        <p class="small text-light">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus placeat eveniet alias commodi tempore. Perspiciatis, laborum. Fugit tempore veritatis facilis, cupiditate placeat reprehenderit officiis facere libero accusamus dignissimos necessitatibus sapiente.</p>
+                        <footer class="blockquote-footer text-light">
+                                Youtbe here <cite>Youtube</cite>
+                             <abbr title="World health org.">WHO</abbr>
+                        </footer>
+                        <a class="btn btn-primary  d-grid gap-2" href="{% url 'agri_officer_reg' %}" role="button" style="background-color: rgb(204, 53, 109);" > Staff</a>
+                </div>
+        </div>
+
+       
+</div>
+</div>
+
+
+
+{% endblock %}

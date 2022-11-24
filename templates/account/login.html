@@ -1,0 +1,91 @@
+{% extends 'store/base.html' %}
+{% load crispy_forms_tags %}
+<!-- {% load widget_tweaks %} -->
+
+
+{% block content %}
+<style>
+    ::placeholder {
+            color: red;
+            }
+</style>
+<div class="container " >
+    <div class=" p-3 m-3 " >
+        <div class="col-lg-5 mx-auto border rounded pt-5 p-4 m-4  " style="">
+            <div class="text-center col">
+            
+                <img 
+                src="https://cdn.dribbble.com/users/20130/screenshots/2933302/media/2f5c373fc385ed7214241c461e2ad267.gif" style="height: 150px; background-color: transparent;">
+            <!-- <hr> -->
+            <div class="display-3  bold " style="color:rgb(148, 10, 121); font-size: 25px; font-weight: 400; "> Create An Account</div>
+            <hr style="color: rgb(4, 0, 7); height: 5px;">
+            </div>
+            
+           
+            <form action="" method="POST" >
+
+                {% csrf_token %}
+            <!--head part-->
+
+            <fieldset class="form-group"></fieldset>
+            
+            <div class="input-group mb-3 col-12 text-dark" >
+                <div class="input-group-append text-dark">
+                    <!-- <span class="input-group-text"><i class="fas fa-user"></i></span> -->
+                </div>
+                <input type="text" name="username" placeholder="Username..." class="form-control  text-dark" >
+            </div>
+            <div class="input-group mb-2 col-12 text-dark">
+                <div class="input-group-append">
+                    <!-- <span class="input-group-text"><i class="fas fa-key"></i></span> -->
+                </div>
+                <input type="password" name="password" placeholder="Password..." class="form-control text-dark" >
+            </div>
+        </fieldset>
+
+            
+            <!--error message-->
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+
+            <!--foot-->
+            <div class="d-flex justify-content-center mt-3 login_container">
+                    <input style="width: 100%; background-color: rgb(146, 18, 120);"  class="btn   btn-sm " type="submit" value="Login">
+                </div>
+           
+
+
+
+            <!--Register message-->
+            {% if messages %}
+            <div class="d-flex justify-content-center mt-3 login_container bg-dark border rounded ">
+                {% for message in messages %}
+                <p class="text-info mt-2" >
+
+                {{ message }}
+
+                </p>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+           
+
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links text-dark">
+                    Don't have an account? 
+                         <a href="{% url 'type_Sign' %} "  style="margin-left:10px; color: rgb(49, 49, 185);"> Sign Up</a>
+                </div>			
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

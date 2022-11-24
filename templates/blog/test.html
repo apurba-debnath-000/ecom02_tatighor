@@ -1,0 +1,73 @@
+{% extends "store/base.html" %}
+
+{% block content %}
+{% load static %}
+<style>
+    body{
+        /* background-image: url('{% static "picture/co.jpg" %}'); */
+    }
+</style>
+<section>
+    <div class="container-fluid ">
+       
+        <div class="row ">
+            <div class="col-lg-6 mt-3 text-uppercase " style="margin-bottom: 20px; width: 800px;">
+
+                <h5 class="display-3 text-center " style="font-size: 33px; font-weight: 400;">
+                    Topic: {{blog_obj.title|safe}}
+                </h5>
+            </div>
+            
+            <div class="col-lg-6 bg-primary ">
+
+                <img class="img-fluid mb-5 "
+                    src="/abcd/show/{{blog_obj.image}}"
+                    alt="" style="height:400px ; width:400px; margin-left: 220px; margin-top: 30px;">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg-6">
+
+                <div class="text-content ">
+                    {{blog_obj.content|safe}}
+                </div>
+
+                
+                <div class="col-lg-6">
+                    
+                    <h4 class="display-2" style="font-size: 22px;"> All Comments:-----</h4>
+                    
+                    
+                    {% if not blog_obj.comments.all %}
+
+                    No Comments Yet ..... <a href="{% url 'add_comment' blog_obj.pk %}">Add Comment</a>
+
+                    {% else %}
+                    {% for comment in blog_obj.comments.all%}
+                    <strong>
+                        {{forloop.counter}}.&nbsp; {{comment.name}} -
+                        {{comment.date_added}}
+                    </strong>
+                    
+                        <p style="margin-left:20px;">{{comment.body}} </p>
+                   
+                    
+                    <!-- <div class="btn btn-outline-info col-lg-3 m-3 " style="background-color: crimson; margin-right: -20px;" >
+                        <a href="{% url 'delete_comment' comment.pk %}" style="color: aliceblue;">Delete Comment</a>     
+                    </div> -->
+                    
+                    
+                {% endfor %}
+               
+                        <a href="{% url 'add_comment' blog_obj.pk %}" class="btn btn-sm btn-outline-info">Make Comment</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
