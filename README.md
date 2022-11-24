@@ -1,5 +1,5 @@
-                     #TatGhor (An Ecommerce application to connect local manufacturers with the world)
-		                            #live link: https://tatihut.herokuapp.com/
+                     TatGhor (An Ecommerce application to connect local manufacturers with the world)
+		                            live link: 
 				 
 This is an ecommerce application to connect local manufacturers with the world to sell their products to their desired cost where user or customer will also be able to purchase their desired products at reasonable cost avoiding all middle business man. 
 
