@@ -1,5 +1,5 @@
                      TatGhor (An Ecommerce application to connect local manufacturers with the world)
-		                            live link: 
+		                            live link: https://web-tatghor-2924.up.railway.app/
 				 
 This is an ecommerce application to connect local manufacturers with the world to sell their products to their desired cost where user or customer will also be able to purchase their desired products at reasonable cost avoiding all middle business man. 
 
