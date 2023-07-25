@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'froala_editor',
+    'crispy_bootstrap4',
     #'weather',
     #'WeatherApp',
     # 'django_extensions',
